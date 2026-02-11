@@ -1,0 +1,52 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  min-height: 100vh;
+  background: #f8f9fa;
+  transition: margin-left 0.3s ease;
+  width: calc(100% - 250px);
+  overflow-x: hidden;
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 0;
+  }
+  
+  .dashboard-container,
+  .appointments-container,
+  .patients-container,
+  .settings-container {
+    padding-top: 80px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding-top: 0;
+  }
+  
+  .dashboard-container,
+  .appointments-container,
+  .patients-container,
+  .settings-container {
+    padding-top: 75px !important;
+  }
+}

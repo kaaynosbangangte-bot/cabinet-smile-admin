@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de Rendez-vous</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table role="presentation" style="width: 600px; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden;">
+                    
+                    <!-- Header avec logo et couleur -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #8bc34a 0%, #7cb342 100%); padding: 40px 30px; text-align: center;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600;">
+                                🦷 Cabinet Dentaire Smile
+                            </h1>
+                            <p style="margin: 10px 0 0 0; color: #ffffff; font-size: 16px; opacity: 0.95;">
+                                Votre sourire, notre priorité
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Contenu principal -->
+                    <tr>
+                        <td style="padding: 40px 30px;">
+                            <h2 style="margin: 0 0 20px 0; color: #2d3436; font-size: 24px; font-weight: 600;">
+                                Bonjour {{to_name}},
+                            </h2>
+                            
+                            <div style="background-color: #e8f5e9; border-left: 4px solid #8bc34a; padding: 20px; margin: 20px 0; border-radius: 5px;">
+                                <p style="margin: 0; color: #2d3436; font-size: 16px; font-weight: 600;">
+                                    ✅ Votre rendez-vous a été confirmé avec succès !
+                                </p>
+                            </div>
+
+                            <!-- Message personnalisé -->
+                            <div style="margin: 30px 0; color: #2d3436; font-size: 15px; line-height: 1.8; white-space: pre-line;">
+                                {{message}}
+                            </div>
+
+                            <!-- Informations importantes -->
+                            <div style="background-color: #f8f9fa; padding: 25px; border-radius: 8px; margin: 30px 0;">
+                                <h3 style="margin: 0 0 15px 0; color: #2d3436; font-size: 18px;">
+                                    📋 Informations importantes
+                                </h3>
+                                <ul style="margin: 0; padding-left: 20px; color: #636e72; line-height: 1.8;">
+                                    <li>Merci d'arriver 10 minutes avant l'heure du rendez-vous</li>
+                                    <li>Pensez à apporter votre carte d'identité et carte vitale</li>
+                                    <li>En cas d'empêchement, prévenez-nous au moins 24h à l'avance</li>
+                                </ul>
+                            </div>
+
+                            <!-- Bouton de contact -->
+                            <table role="presentation" style="margin: 30px 0; width: 100%;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="tel:+212522000000" style="display: inline-block; padding: 15px 40px; background-color: #8bc34a; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 2px 4px rgba(139, 195, 74, 0.3);">
+                                            📞 Nous contacter
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="margin: 30px 0 0 0; color: #636e72; font-size: 15px; line-height: 1.6;">
+                                Nous vous attendons avec plaisir !<br>
+                                <strong style="color: #2d3436;">L'équipe du Cabinet Dentaire Smile</strong>
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #2d3436; padding: 30px; text-align: center;">
+                            <p style="margin: 0 0 10px 0; color: #ffffff; font-size: 14px;">
+                                <strong>Cabinet Dentaire Smile</strong>
+                            </p>
+                            <p style="margin: 0 0 15px 0; color: #b2bec3; font-size: 13px;">
+                                📍 Adresse du cabinet<br>
+                                📞 +212 5 22 00 00 00<br>
+                                📧 contact@smile-cabinet.com
+                            </p>
+                            <div style="margin: 20px 0;">
+                                <a href="#" style="display: inline-block; margin: 0 8px; color: #8bc34a; text-decoration: none; font-size: 20px;">📘</a>
+                                <a href="#" style="display: inline-block; margin: 0 8px; color: #8bc34a; text-decoration: none; font-size: 20px;">📷</a>
+                                <a href="#" style="display: inline-block; margin: 0 8px; color: #8bc34a; text-decoration: none; font-size: 20px;">🐦</a>
+                            </div>
+                            <p style="margin: 15px 0 0 0; color: #636e72; font-size: 12px;">
+                                © 2026 Cabinet Dentaire Smile. Tous droits réservés.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
