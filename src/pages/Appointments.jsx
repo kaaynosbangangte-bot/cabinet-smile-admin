@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react'
-import { 
-  collection, 
-  query, 
-  orderBy, 
+import {
+  collection,
+  query,
+  orderBy,
   onSnapshot,
   doc,
   updateDoc,
   addDoc,
-  serverTimestamp 
+  serverTimestamp
 } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { toast } from 'react-toastify'
 import { sendConfirmationMessages } from '../services/messageService'
-import { 
-  FiCalendar, 
-  FiClock, 
-  FiUser, 
-  FiPhone, 
-  FiMail, 
-  FiFilter, 
-  FiPlus, 
-  FiCheckCircle, 
-  FiXCircle, 
+import {
+  FiCalendar,
+  FiClock,
+  FiUser,
+  FiPhone,
+  FiMail,
+  FiFilter,
+  FiPlus,
+  FiCheckCircle,
+  FiXCircle,
   FiEye,
   FiChevronLeft,
   FiChevronRight,
@@ -81,7 +81,7 @@ Nous vous attendons avec plaisir. En cas d'empêchement, merci de nous prévenir
 
 Cordialement,
 Cabinet Dentaire Smile`
-    
+
     return message
   }
 
@@ -177,8 +177,7 @@ Cabinet Dentaire Smile`
 
   useEffect(() => {
     const q = query(
-      collection(db, 'appointments'),
-      orderBy('createdAt', 'desc')
+      collection(db, 'appointments')
     )
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -213,7 +212,7 @@ Cabinet Dentaire Smile`
 
   const handleAddAppointment = async (e) => {
     e.preventDefault()
-    
+
     try {
       await addDoc(collection(db, 'appointments'), {
         ...newAppointment,
@@ -222,7 +221,7 @@ Cabinet Dentaire Smile`
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp()
       })
-      
+
       toast.success('Rendez-vous créé avec succès')
       setShowAddModal(false)
       setNewAppointment({
@@ -254,10 +253,10 @@ Cabinet Dentaire Smile`
   return (
     <div className="dashboard-layout">
       <Sidebar />
-      
+
       <div className="dashboard-main">
         <Header title="Rendez-vous" />
-        
+
         <div className="dashboard-content">
           <div className="page-header">
             <div>
@@ -270,25 +269,25 @@ Cabinet Dentaire Smile`
           </div>
 
           <div className="filters-bar">
-            <button 
+            <button
               className={filter === 'all' ? 'active' : ''}
               onClick={() => { setFilter('all'); setCurrentPage(1); }}
             >
               Tous les statuts
             </button>
-            <button 
+            <button
               className={filter === 'pending' ? 'active' : ''}
               onClick={() => { setFilter('pending'); setCurrentPage(1); }}
             >
               En attente
             </button>
-            <button 
+            <button
               className={filter === 'confirmed' ? 'active' : ''}
               onClick={() => { setFilter('confirmed'); setCurrentPage(1); }}
             >
               Confirmés
             </button>
-            <button 
+            <button
               className={filter === 'rejected' ? 'active' : ''}
               onClick={() => { setFilter('rejected'); setCurrentPage(1); }}
             >
@@ -321,26 +320,26 @@ Cabinet Dentaire Smile`
                   <tbody>
                     {currentAppointments.map(appointment => (
                       <tr key={appointment.id}>
-                        <td>
+                        <td data-label="Patient">
                           <div className="patient-cell">
                             <FiUser />
                             <span>{appointment.name}</span>
                           </div>
                         </td>
-                        <td>{appointment.date}</td>
-                        <td>{appointment.time}</td>
-                        <td>{appointment.email}</td>
-                        <td>{appointment.phone}</td>
-                        <td>
+                        <td data-label="Date">{appointment.date}</td>
+                        <td data-label="Heure">{appointment.time}</td>
+                        <td data-label="Email">{appointment.email}</td>
+                        <td data-label="Téléphone">{appointment.phone}</td>
+                        <td data-label="Statut">
                           <span className={`status-badge ${appointment.status}`}>
                             {appointment.status === 'pending' && 'En attente'}
                             {appointment.status === 'confirmed' && 'Confirmé'}
                             {appointment.status === 'rejected' && 'Rejeté'}
                           </span>
                         </td>
-                        <td>
+                        <td data-label="Actions">
                           <div className="action-buttons">
-                            <button 
+                            <button
                               className="btn-icon btn-details"
                               onClick={() => handleViewDetails(appointment)}
                               title="Voir détails"
@@ -349,14 +348,14 @@ Cabinet Dentaire Smile`
                             </button>
                             {appointment.status === 'pending' && (
                               <>
-                                <button 
+                                <button
                                   className="btn-icon btn-confirm"
                                   onClick={() => handleConfirmClick(appointment)}
                                   title="Confirmer"
                                 >
                                   <FiCheckCircle />
                                 </button>
-                                <button 
+                                <button
                                   className="btn-icon btn-reject"
                                   onClick={() => handleStatusChange(appointment.id, 'rejected')}
                                   title="Rejeter"
@@ -371,17 +370,18 @@ Cabinet Dentaire Smile`
                     ))}
                   </tbody>
                 </table>
+
               </div>
 
               {totalPages > 1 && (
                 <div className="pagination">
-                  <button 
+                  <button
                     onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                     disabled={currentPage === 1}
                   >
                     <FiChevronLeft /> Précédent
                   </button>
-                  
+
                   <div className="page-numbers">
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                       <button
@@ -394,7 +394,7 @@ Cabinet Dentaire Smile`
                     ))}
                   </div>
 
-                  <button 
+                  <button
                     onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                     disabled={currentPage === totalPages}
                   >
@@ -421,7 +421,7 @@ Cabinet Dentaire Smile`
                   <input
                     type="text"
                     value={newAppointment.name}
-                    onChange={(e) => setNewAppointment({...newAppointment, name: e.target.value})}
+                    onChange={(e) => setNewAppointment({ ...newAppointment, name: e.target.value })}
                     required
                   />
                 </div>
@@ -430,7 +430,7 @@ Cabinet Dentaire Smile`
                   <input
                     type="email"
                     value={newAppointment.email}
-                    onChange={(e) => setNewAppointment({...newAppointment, email: e.target.value})}
+                    onChange={(e) => setNewAppointment({ ...newAppointment, email: e.target.value })}
                     required
                   />
                 </div>
@@ -439,7 +439,7 @@ Cabinet Dentaire Smile`
                   <input
                     type="tel"
                     value={newAppointment.phone}
-                    onChange={(e) => setNewAppointment({...newAppointment, phone: e.target.value})}
+                    onChange={(e) => setNewAppointment({ ...newAppointment, phone: e.target.value })}
                     required
                   />
                 </div>
@@ -448,7 +448,7 @@ Cabinet Dentaire Smile`
                   <input
                     type="text"
                     value={newAppointment.service}
-                    onChange={(e) => setNewAppointment({...newAppointment, service: e.target.value})}
+                    onChange={(e) => setNewAppointment({ ...newAppointment, service: e.target.value })}
                     placeholder="Ex: Consultation, Détartrage..."
                   />
                 </div>
@@ -457,7 +457,7 @@ Cabinet Dentaire Smile`
                   <input
                     type="date"
                     value={newAppointment.date}
-                    onChange={(e) => setNewAppointment({...newAppointment, date: e.target.value})}
+                    onChange={(e) => setNewAppointment({ ...newAppointment, date: e.target.value })}
                     required
                   />
                 </div>
@@ -466,7 +466,7 @@ Cabinet Dentaire Smile`
                   <input
                     type="time"
                     value={newAppointment.time}
-                    onChange={(e) => setNewAppointment({...newAppointment, time: e.target.value})}
+                    onChange={(e) => setNewAppointment({ ...newAppointment, time: e.target.value })}
                     required
                   />
                 </div>
@@ -474,7 +474,7 @@ Cabinet Dentaire Smile`
                   <label>Message</label>
                   <textarea
                     value={newAppointment.message}
-                    onChange={(e) => setNewAppointment({...newAppointment, message: e.target.value})}
+                    onChange={(e) => setNewAppointment({ ...newAppointment, message: e.target.value })}
                     rows="3"
                     placeholder="Notes supplémentaires..."
                   ></textarea>
@@ -558,7 +558,7 @@ Cabinet Dentaire Smile`
 
               {selectedAppointment.status === 'pending' && (
                 <div className="detail-actions">
-                  <button 
+                  <button
                     className="btn-action btn-confirm-large"
                     onClick={() => {
                       setShowDetailsModal(false)
@@ -567,7 +567,7 @@ Cabinet Dentaire Smile`
                   >
                     <FiCheckCircle /> Confirmer le rendez-vous
                   </button>
-                  <button 
+                  <button
                     className="btn-action btn-reject-large"
                     onClick={() => {
                       handleStatusChange(selectedAppointment.id, 'rejected')
@@ -606,7 +606,7 @@ Cabinet Dentaire Smile`
                 <p className="section-hint">Vous pouvez modifier le message avant de l'envoyer</p>
                 <textarea
                   value={confirmationData.message}
-                  onChange={(e) => setConfirmationData({...confirmationData, message: e.target.value})}
+                  onChange={(e) => setConfirmationData({ ...confirmationData, message: e.target.value })}
                   rows="10"
                   className="message-textarea"
                 />
@@ -615,7 +615,7 @@ Cabinet Dentaire Smile`
               <div className="channels-section">
                 <h3>Canaux d'envoi</h3>
                 <p className="section-hint">Sélectionnez les moyens de communication</p>
-                
+
                 <div className="channels-grid">
                   <label className={`channel-option ${confirmationData.channels.whatsapp ? 'active' : ''}`}>
                     <input
@@ -623,7 +623,7 @@ Cabinet Dentaire Smile`
                       checked={confirmationData.channels.whatsapp}
                       onChange={(e) => setConfirmationData({
                         ...confirmationData,
-                        channels: {...confirmationData.channels, whatsapp: e.target.checked}
+                        channels: { ...confirmationData.channels, whatsapp: e.target.checked }
                       })}
                     />
                     <div className="channel-icon whatsapp">
@@ -641,7 +641,7 @@ Cabinet Dentaire Smile`
                       checked={confirmationData.channels.sms}
                       onChange={(e) => setConfirmationData({
                         ...confirmationData,
-                        channels: {...confirmationData.channels, sms: e.target.checked}
+                        channels: { ...confirmationData.channels, sms: e.target.checked }
                       })}
                     />
                     <div className="channel-icon sms">
@@ -659,7 +659,7 @@ Cabinet Dentaire Smile`
                       checked={confirmationData.channels.email}
                       onChange={(e) => setConfirmationData({
                         ...confirmationData,
-                        channels: {...confirmationData.channels, email: e.target.checked}
+                        channels: { ...confirmationData.channels, email: e.target.checked }
                       })}
                     />
                     <div className="channel-icon email">
@@ -674,13 +674,13 @@ Cabinet Dentaire Smile`
               </div>
 
               <div className="confirmation-actions">
-                <button 
+                <button
                   className="btn-cancel-confirm"
                   onClick={() => setShowConfirmModal(false)}
                 >
                   Annuler
                 </button>
-                <button 
+                <button
                   className="btn-send-confirm"
                   onClick={handleSendConfirmation}
                   disabled={!confirmationData.channels.whatsapp && !confirmationData.channels.sms && !confirmationData.channels.email}

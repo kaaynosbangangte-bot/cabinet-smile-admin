@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { 
-  collection, 
-  query, 
-  orderBy, 
+import {
+  collection,
+  query,
+  orderBy,
   onSnapshot
 } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { toast } from 'react-toastify'
-import { 
-  FiCalendar, 
-  FiClock, 
+import {
+  FiCalendar,
+  FiClock,
   FiCheckCircle,
   FiArrowRight,
   FiUsers,
@@ -29,8 +29,7 @@ function Dashboard() {
 
   useEffect(() => {
     const q = query(
-      collection(db, 'appointments'),
-      orderBy('createdAt', 'desc')
+      collection(db, 'appointments')
     )
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -67,10 +66,10 @@ function Dashboard() {
   return (
     <div className="dashboard-layout">
       <Sidebar />
-      
+
       <div className="dashboard-main">
         <Header title="Accueil" />
-        
+
         <div className="dashboard-content">
           <div className="welcome-section">
             <h1>Bienvenue sur votre Dashboard</h1>
@@ -79,7 +78,7 @@ function Dashboard() {
 
           <div className="stats-grid">
             <div className="stat-card">
-              <div className="stat-icon" style={{background: '#e3f2fd', color: '#1976d2'}}>
+              <div className="stat-icon" style={{ background: '#e3f2fd', color: '#1976d2' }}>
                 <FiCalendar />
               </div>
               <div className="stat-info">
@@ -92,7 +91,7 @@ function Dashboard() {
             </div>
 
             <div className="stat-card">
-              <div className="stat-icon" style={{background: '#fff3e0', color: '#f57c00'}}>
+              <div className="stat-icon" style={{ background: '#fff3e0', color: '#f57c00' }}>
                 <FiClock />
               </div>
               <div className="stat-info">
@@ -105,7 +104,7 @@ function Dashboard() {
             </div>
 
             <div className="stat-card">
-              <div className="stat-icon" style={{background: '#e8f5e9', color: '#388e3c'}}>
+              <div className="stat-icon" style={{ background: '#e8f5e9', color: '#388e3c' }}>
                 <FiCheckCircle />
               </div>
               <div className="stat-info">
@@ -118,7 +117,7 @@ function Dashboard() {
             </div>
 
             <div className="stat-card">
-              <div className="stat-icon" style={{background: '#fce4ec', color: '#c2185b'}}>
+              <div className="stat-icon" style={{ background: '#fce4ec', color: '#c2185b' }}>
                 <FiUsers />
               </div>
               <div className="stat-info">
@@ -193,8 +192,8 @@ function Dashboard() {
               </div>
             </div>
           </div>
+        </div>
       </div>
-    </div>
     </div>
   )
 }

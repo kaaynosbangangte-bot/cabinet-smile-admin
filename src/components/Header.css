@@ -1,34 +1,35 @@
 .dashboard-header {
-  height: 70px;
-  background: #8bc34a;
+  height: var(--header-height);
+  background: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
   position: sticky;
   top: 0;
-  z-index: 50;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  border-bottom: 1px solid #e9ecef;
 }
 
 .header-search {
   position: relative;
-  flex: 0 0 350px;
+  flex: 0 1 400px;
 }
 
 .header-search input {
   width: 100%;
   padding: 10px 15px 10px 45px;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  background: white;
-  transition: all 0.3s ease;
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: #f8f9fa;
+  transition: all 0.2s ease;
 }
 
 .header-search input:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  background: white;
+  border-color: #8bc34a;
+  box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.1);
 }
 
 .search-icon {
@@ -43,55 +44,55 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .header-date {
-  color: white;
-  font-size: 0.9rem;
+  color: #636e72;
+  font-size: 0.85rem;
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  border-radius: 6px;
-}
-
-.header-user {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  background: #f8f9fa;
+  padding: 8px 15px;
+  border-radius: 8px;
 }
 
 .user-avatar-small {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #8bc34a;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.1rem;
-  color: #8bc34a;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.user-avatar-small:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+@media (max-width: 1024px) {
+  .dashboard-header {
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: 768px) {
   .dashboard-header {
-    padding: 0 15px;
+    padding: 0 15px 0 70px;
+    /* Espace pour le menu toggle */
   }
 
   .header-search {
-    flex: 1;
-    max-width: 250px;
+    display: none;
+    /* Cacher la recherche sur petit mobile pour gagner de la place */
   }
 
   .header-date {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header {
+    padding: 0 10px 0 60px;
   }
 }
