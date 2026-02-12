@@ -32,6 +32,7 @@ import { FaWhatsapp } from 'react-icons/fa'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
 import './Appointments.css'
+import '../styles/modals.css'
 
 function Appointments() {
   const [appointments, setAppointments] = useState([])
@@ -177,7 +178,8 @@ Cabinet Dentaire Smile`
 
   useEffect(() => {
     const q = query(
-      collection(db, 'appointments')
+      collection(db, 'appointments'),
+      orderBy('createdAt', 'desc')
     )
 
     const unsubscribe = onSnapshot(q, (snapshot) => {

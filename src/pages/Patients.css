@@ -132,10 +132,36 @@
   border-radius: 15px;
   background: #8bc34a;
   color: white;
+  font-size: 2.5rem;
+}
+
+.modal-patient {
+  max-width: 800px;
+}
+
+.patient-details-content {
+  padding: 20px;
+}
+
+.contact-info {
+  display: flex;
+  gap: 20px;
+  margin-top: 5px;
+}
+
+.contact-info span {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
+  gap: 8px;
+  color: #636e72;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .contact-info {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 @media (max-width: 480px) {

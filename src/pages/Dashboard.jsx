@@ -29,7 +29,8 @@ function Dashboard() {
 
   useEffect(() => {
     const q = query(
-      collection(db, 'appointments')
+      collection(db, 'appointments'),
+      orderBy('createdAt', 'desc')
     )
 
     const unsubscribe = onSnapshot(q, (snapshot) => {

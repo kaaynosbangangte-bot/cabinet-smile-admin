@@ -190,71 +190,7 @@
 
 /* ... (styles précédents) ... */
 
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-group label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #2d3436;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 12px;
-  border: 1px solid #dfe6e9;
-  border-radius: 10px;
-  background: #f8f9fa;
-  font-size: 1rem;
-}
-
-.form-group textarea {
-  grid-column: span 2;
-}
-
-.modal-footer {
-  padding: 20px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  border-top: 1px solid #f1f3f5;
-}
-
-.btn-submit {
-  padding: 12px 25px;
-  background: #8bc34a;
-  color: white;
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-@media (max-width: 600px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .form-group textarea {
-    grid-column: span 1;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-content {
-    width: 95%;
-    max-height: 95vh;
-  }
-}
+/* Les styles des modaux ont été déportés dans modals.css pour plus de clarté et de réutilisabilité */
 
 .pagination {
   display: flex;
@@ -262,6 +198,32 @@
   gap: 10px;
   margin-top: 30px;
 }
+
+.pagination button {
+  padding: 8px 15px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #dfe6e9;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  border-color: #8bc34a;
+  color: #8bc34a;
+}
+
+.pagination button.active {
+  background: #8bc34a;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Les styles des modaux sont dans modals.css */
 
 
 .pagination button {

@@ -13,6 +13,7 @@ import {
   FiUser
 } from 'react-icons/fi'
 import './Patients.css'
+import '../styles/modals.css'
 
 function Patients() {
   const [appointments, setAppointments] = useState([])
@@ -158,7 +159,7 @@ function Patients() {
               </div>
 
               <div className="appointments-history">
-                <h3>Historique des Rendez-vous des patients({selectedPatient.appointments.length})</h3>
+                <h3>Historique des Rendez-vous({selectedPatient.appointments.length})</h3>
                 <div className="history-list">
                   {selectedPatient.appointments.map((apt, idx) => (
                     <div key={idx} className="history-item">
