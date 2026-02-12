@@ -3,11 +3,11 @@ import { collection, query, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
-import { 
-  FiUsers, 
-  FiSearch, 
-  FiPhone, 
-  FiMail, 
+import {
+  FiUsers,
+  FiSearch,
+  FiPhone,
+  FiMail,
   FiCalendar,
   FiEye,
   FiUser
@@ -30,9 +30,9 @@ function Patients() {
         id: doc.id,
         ...doc.data()
       }))
-      
+
       setAppointments(appointmentsData)
-      
+
       // Extraire les patients uniques
       const uniquePatients = {}
       appointmentsData.forEach(apt => {
@@ -53,7 +53,7 @@ function Patients() {
           message: apt.message
         })
       })
-      
+
       setPatients(Object.values(uniquePatients))
       setLoading(false)
     })
@@ -75,10 +75,10 @@ function Patients() {
   return (
     <div className="dashboard-layout">
       <Sidebar />
-      
+
       <div className="dashboard-main">
         <Header title="Patients" />
-        
+
         <div className="dashboard-content">
           <div className="page-header">
             <div>
@@ -123,7 +123,7 @@ function Patients() {
                       </span>
                     </div>
                   </div>
-                  <button 
+                  <button
                     className="btn-view-patient"
                     onClick={() => handleViewPatient(patient)}
                   >
@@ -158,7 +158,7 @@ function Patients() {
               </div>
 
               <div className="appointments-history">
-                <h3>Historique des Rendez-vous ({selectedPatient.appointments.length})</h3>
+                <h3>Historique des Rendez-vous des patients({selectedPatient.appointments.length})</h3>
                 <div className="history-list">
                   {selectedPatient.appointments.map((apt, idx) => (
                     <div key={idx} className="history-item">
