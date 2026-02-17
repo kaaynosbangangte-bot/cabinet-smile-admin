@@ -53,8 +53,7 @@ function Dashboard() {
   const stats = {
     total: appointments.length,
     pending: appointments.filter(a => a.status === 'pending').length,
-    confirmed: appointments.filter(a => a.status === 'confirmed').length,
-    rejected: appointments.filter(a => a.status === 'rejected').length
+    confirmed: appointments.filter(a => a.status === 'confirmed').length
   }
 
   // Rendez-vous récents (5 derniers)
@@ -157,7 +156,6 @@ function Dashboard() {
                       <span className={`status-badge-small ${apt.status}`}>
                         {apt.status === 'pending' && 'En attente'}
                         {apt.status === 'confirmed' && 'Confirmé'}
-                        {apt.status === 'rejected' && 'Rejeté'}
                       </span>
                     </div>
                   ))

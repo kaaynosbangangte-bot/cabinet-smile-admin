@@ -21,7 +21,6 @@ import {
   FiFilter,
   FiPlus,
   FiCheckCircle,
-  FiXCircle,
   FiEye,
   FiChevronLeft,
   FiChevronRight,
@@ -218,7 +217,7 @@ Cabinet Dentaire Smile`
     try {
       await addDoc(collection(db, 'appointments'), {
         ...newAppointment,
-        status: 'confirmed',
+        status: 'pending',
         source: 'manual',
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp()
@@ -289,12 +288,6 @@ Cabinet Dentaire Smile`
             >
               Confirmés
             </button>
-            <button
-              className={filter === 'rejected' ? 'active' : ''}
-              onClick={() => { setFilter('rejected'); setCurrentPage(1); }}
-            >
-              Rejetés
-            </button>
           </div>
 
           {loading ? (
@@ -336,7 +329,6 @@ Cabinet Dentaire Smile`
                           <span className={`status-badge ${appointment.status}`}>
                             {appointment.status === 'pending' && 'En attente'}
                             {appointment.status === 'confirmed' && 'Confirmé'}
-                            {appointment.status === 'rejected' && 'Rejeté'}
                           </span>
                         </td>
                         <td data-label="Actions">
@@ -356,13 +348,6 @@ Cabinet Dentaire Smile`
                                   title="Confirmer"
                                 >
                                   <FiCheckCircle />
-                                </button>
-                                <button
-                                  className="btn-icon btn-reject"
-                                  onClick={() => handleStatusChange(appointment.id, 'rejected')}
-                                  title="Rejeter"
-                                >
-                                  <FiXCircle />
                                 </button>
                               </>
                             )}
@@ -538,7 +523,6 @@ Cabinet Dentaire Smile`
                   <span className={`status-badge ${selectedAppointment.status}`}>
                     {selectedAppointment.status === 'pending' && 'En attente'}
                     {selectedAppointment.status === 'confirmed' && 'Confirmé'}
-                    {selectedAppointment.status === 'rejected' && 'Rejeté'}
                   </span>
                 </div>
                 <div className="detail-row">
@@ -568,15 +552,6 @@ Cabinet Dentaire Smile`
                     }}
                   >
                     <FiCheckCircle /> Confirmer le rendez-vous
-                  </button>
-                  <button
-                    className="btn-action btn-reject-large"
-                    onClick={() => {
-                      handleStatusChange(selectedAppointment.id, 'rejected')
-                      setShowDetailsModal(false)
-                    }}
-                  >
-                    <FiXCircle /> Rejeter le rendez-vous
                   </button>
                 </div>
               )}

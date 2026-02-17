@@ -53,7 +53,9 @@ function Sidebar() {
             <span>{currentUser?.email?.charAt(0).toUpperCase()}</span>
           </div>
           <div className="user-info">
-            <p className="user-name">Dr. Marie Jane</p>
+            <p className="user-name">
+              {currentUser?.email ? currentUser.email.split('@')[0].split(/[._]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Admin'}
+            </p>
             <p className="user-role">Secrétaire</p>
           </div>
         </div>

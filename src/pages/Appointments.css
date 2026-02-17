@@ -162,11 +162,6 @@
   color: #155724;
 }
 
-.status-badge.rejected {
-  background: #f8d7da;
-  color: #721c24;
-}
-
 .action-buttons {
   display: flex;
   gap: 8px;
