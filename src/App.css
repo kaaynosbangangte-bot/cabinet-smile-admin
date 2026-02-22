@@ -29,7 +29,7 @@
     width: 100%;
     padding-top: 0;
   }
-  
+
   .dashboard-container,
   .appointments-container,
   .patients-container,
@@ -42,11 +42,32 @@
   .main-content {
     padding-top: 0;
   }
-  
+
   .dashboard-container,
   .appointments-container,
   .patients-container,
-  .settings-container {
+  .settings-container,
+  .dashboard-content {
     padding-top: 75px !important;
+  }
+}
+
+/* Global Page Content Padding */
+.dashboard-content {
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 20px 15px;
   }
 }

@@ -7,14 +7,14 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Appointments from './pages/Appointments'
 import Patients from './pages/Patients'
-import Settings from './pages/Settings'
+import Messages from './pages/Messages'
 import './App.css'
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <ToastContainer 
+        <ToastContainer
           position="top-right"
           autoClose={3000}
           hideProgressBar={false}
@@ -28,37 +28,37 @@ function App() {
         />
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route 
-            path="/dashboard" 
+          <Route
+            path="/dashboard"
             element={
               <PrivateRoute>
                 <Dashboard />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/rendez-vous" 
+          <Route
+            path="/rendez-vous"
             element={
               <PrivateRoute>
                 <Appointments />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/patients" 
+          <Route
+            path="/patients"
             element={
               <PrivateRoute>
                 <Patients />
               </PrivateRoute>
-            } 
+            }
           />
-          <Route 
-            path="/parametre" 
+          <Route
+            path="/messages"
             element={
               <PrivateRoute>
-                <Settings />
+                <Messages />
               </PrivateRoute>
-            } 
+            }
           />
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
         </Routes>

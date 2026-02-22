@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { FiHome, FiCalendar, FiUsers, FiSettings, FiLogOut, FiMenu, FiX } from 'react-icons/fi'
+import { FiHome, FiCalendar, FiUsers, FiMail, FiLogOut, FiMenu, FiX } from 'react-icons/fi'
 import './Sidebar.css'
 
 function Sidebar() {
@@ -12,7 +12,7 @@ function Sidebar() {
     { path: '/dashboard', icon: FiHome, label: 'Accueil' },
     { path: '/rendez-vous', icon: FiCalendar, label: 'Rendez-vous' },
     { path: '/patients', icon: FiUsers, label: 'Patients' },
-    { path: '/parametre', icon: FiSettings, label: 'Paramètre' }
+    { path: '/messages', icon: FiMail, label: 'Messages' }
   ]
 
   useEffect(() => {

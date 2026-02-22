@@ -25,22 +25,6 @@
   }
 }
 
-.dashboard-content {
-  padding: 30px;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .dashboard-content {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .dashboard-content {
-    padding: 15px;
-  }
-}
 
 .welcome-section {
   margin-bottom: 30px;

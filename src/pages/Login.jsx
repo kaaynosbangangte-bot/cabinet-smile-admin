@@ -14,7 +14,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     if (!email || !password) {
       return
     }
@@ -44,15 +44,15 @@ function Login() {
           </svg>
         </div>
       </div>
-      
+
       <div className="login-right">
         <div className="login-card">
           <div className="login-logo">
             <img src="/logo.png" alt="Cabinet Dentaire Smile" />
           </div>
-          
+
           <h2 className="login-title">Connexion</h2>
-          
+
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Mail *</label>
@@ -87,12 +87,9 @@ function Login() {
               </div>
             </div>
 
-            <div className="forgot-password">
-              <a href="#">Mot de passe oublier</a>
-            </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="btn-login"
               disabled={loading}
             >
