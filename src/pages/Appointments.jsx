@@ -608,10 +608,10 @@ Cabinet Dentaire Smile`
                     </div>
                     <div className="channel-info">
                       <h4>WhatsApp</h4>
-                      <p>{selectedAppointment.phone}</p>
                     </div>
                   </label>
 
+                  {/* Canal SMS momentanément désactivé
                   <label className={`channel-option ${confirmationData.channels.sms ? 'active' : ''}`}>
                     <input
                       type="checkbox"
@@ -629,6 +629,7 @@ Cabinet Dentaire Smile`
                       <p>{selectedAppointment.phone}</p>
                     </div>
                   </label>
+                  */}
 
                   <label className={`channel-option ${confirmationData.channels.email ? 'active' : ''}`}>
                     <input
@@ -644,7 +645,6 @@ Cabinet Dentaire Smile`
                     </div>
                     <div className="channel-info">
                       <h4>Email</h4>
-                      <p>{selectedAppointment.email}</p>
                     </div>
                   </label>
                 </div>
